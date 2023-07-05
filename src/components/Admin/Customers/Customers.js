@@ -1,3 +1,5 @@
+
+
 const people = [
   {
     name: "Lindsay Walton",
@@ -8,7 +10,9 @@ const people = [
   // More people...
 ];
 
-export default function Customers() {
+export default function Customers() 
+{
+  
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -94,3 +98,12 @@ export default function Customers() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+

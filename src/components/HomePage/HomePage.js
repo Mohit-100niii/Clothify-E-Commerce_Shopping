@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import HomeCategories from "./HomeCategories";
 import HomeProductTrending from "./HomeProductTrending";
+import HomeImages from "../Images/HomePage.jpg"
 
 const offers = [
   {
@@ -66,7 +67,7 @@ export default function Example() {
                     <a
                       href={offer.href}
                       className="relative flex flex-1 flex-col justify-center bg-white py-6 px-4 text-center focus:z-10">
-                      <p className="text-sm text-gray-500">{offer.name}</p>
+                      <p className="text-sm text-gray-500"><b>{offer.name}</b></p>
                       <p className="font-semibold text-gray-900">
                         {offer.description}
                       </p>
@@ -105,7 +106,8 @@ export default function Example() {
             </div>
             <div className="h-48 w-full sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:h-full lg:w-1/2">
               <img
-                src="https://tailwindui.com/img/ecommerce-images/home-page-02-hero-half-width.jpg"
+                // src="https://tailwindui.com/img/ecommerce-images/home-page-02-hero-half-width.jpg"
+                src={HomeImages}
                 alt=""
                 className="h-full w-full object-cover object-center"
               />

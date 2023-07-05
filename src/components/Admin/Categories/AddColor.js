@@ -1,8 +1,20 @@
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
+import { createColorAction } from "../../../redux/slices/categories/colorsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import LoadingComponent from "../../LoadingComp/LoadingComponent";
+import SuccessMsg from "../../SuccessMsg/SuccessMsg";
+import ErrorMsg from "../../ErrorMsg/ErrorMsg";
+
+
+
+
+
 
 export default function AddColor() {
+
+  const dispatch = useDispatch();
   //form data
   const [formData, setFormData] = useState({
     name: "",
@@ -13,11 +25,25 @@ export default function AddColor() {
   };
 
   //onSubmit
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = (e) => 
+  {
     e.preventDefault();
+    dispatch(createColorAction(formData?.name));
+    setFormData({
+      name: "",
+    });
   };
+
+  //get data from store
+  const { loading, error, isAdded } = useSelector((state) => state?.colors);
+
+
+
+
   return (
     <>
+    {isAdded && <SuccessMsg message="Color Added Successfully" />}
+      {error && <ErrorMsg message={error?.message} />}
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <svg
@@ -57,11 +83,11 @@ export default function AddColor() {
                 </div>
               </div>
               <div>
-                <button
+                {loading ? <LoadingComponent /> :<button
                   type="submit"
                   className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   Add Product Color
-                </button>
+                </button>}
               </div>
             </form>
 

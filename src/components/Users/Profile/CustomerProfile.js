@@ -1,11 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
+import { getUserProfileAction } from "../../../redux/slices/users/userSlice";
 import CustomerDetails from "./CustomerDetails";
 import ShippingAddressDetails from "./ShippingAddressDetails";
+import { useEffect } from "react";
+
 
 export default function CustomerProfile() {
-  let profile;
-  let loading;
-  let error;
-  let orders = [];
+
+   //dispatch
+   const dispatch = useDispatch();
+   useEffect(() => {
+     dispatch(getUserProfileAction());
+   }, [dispatch]);
+
+
+     //get data from store
+  const { error, loading, profile } = useSelector((state) => state?.users);
+  // console.log(profile,error,loading);
+
+
+  //get orders
+  const orders = profile?.user?.orders;
+   console.log(orders);
+
+
+ 
 
   return (
     <>
@@ -24,7 +43,7 @@ export default function CustomerProfile() {
       {loading ? (
         <h2>Loading...</h2>
       ) : error ? (
-        <h2>{error}</h2>
+        <h2>{error?.message}</h2>
       ) : orders?.length <= 0 ? (
         <h2 className="text-center mt-10">No Order Found</h2>
       ) : (
@@ -97,8 +116,8 @@ export default function CustomerProfile() {
                             <div className="sm:flex lg:col-span-7">
                               <div className="aspect-w-1 aspect-h-1 w-full flex-shrink-0 overflow-hidden rounded-lg sm:aspect-none sm:h-40 sm:w-40">
                                 <img
-                                  src={product.imageSrc}
-                                  alt={product.imageAlt}
+                                  src={product.image}
+                                  alt={product.name}
                                   className="h-full w-full object-cover object-center sm:h-full sm:w-full"
                                 />
                               </div>
@@ -108,7 +127,7 @@ export default function CustomerProfile() {
                                   <a href={product.href}>{product.name}</a>
                                 </h3>
                                 <p className="mt-2 text-sm font-medium text-gray-900">
-                                  ${product.discountedPrice}
+                                  ${order?.totalPrice}
                                 </p>
                                 <p className="mt-3 text-sm text-gray-500">
                                   {product.description}
