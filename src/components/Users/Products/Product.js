@@ -116,8 +116,12 @@ export default function Product() {
   }, []);
   //get data from store
   const { cartItems } = useSelector((state) => state?.carts);
-  const productExists = cartItems?.find(
-    (item) => item?._id?.toString() === product?._id.toString()
+  // const productExists = cartItems?.find(
+  //   (item) => item?._id?.toString() === product?._id.toString()
+  // );
+
+   const productExists = cartItems?.find(
+    (item) => item?.size === product?.size && item?.color === product?.color
   );
 
   //Add to cart handler
