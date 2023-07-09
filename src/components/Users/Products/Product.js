@@ -119,13 +119,33 @@ export default function Product() {
   // const productExists = cartItems?.find(
   //   (item) => item?._id?.toString() === product?._id.toString()
   // );
-
-   const productExists = cartItems?.find(
+  const productExists = cartItems?.find(
     (item) => item?.size === product?.size && item?.color === product?.color
   );
 
+  useEffect(() => {
+    dispatch(getCartItemsFromLocalStorageAction());
+  }, [dispatch]);
+
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+
+   const isLoggedIn = user?.token ? true : false;
   //Add to cart handler
-  const addToCartHandler = () => {
+  const addToCartHandler = () => 
+  {
+    
+    
+  if (!isLoggedIn) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...!",
+        text: "Please login to add product to cart",
+      });
+    }
+
+
+
+
     //check if product is in cart
     if (productExists) {
       return Swal.fire({
