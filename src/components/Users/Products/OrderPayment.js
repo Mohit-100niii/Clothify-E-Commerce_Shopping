@@ -40,6 +40,8 @@ export default function OrderPayment() {
         totalPrice: sumTotalPrice,
       })
     );
+    //clear cart
+    localStorage.removeItem("cartItems");
   };
   const { loading: orderLoading, error: orderErr } = useSelector(
     (state) => state?.orders
