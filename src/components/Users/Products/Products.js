@@ -10,9 +10,10 @@ const Products = ({ products }) => {
             {/* new */}
             <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
               <div className="relative bg-gray-50">
-                // <span className="absolute top-0 left-0 ml-6 mt-6 px-2 py-1 text-xs font-bold font-heading bg-white border-2 border-red-500 rounded-full text-red-500">
-                //   -15%
-                // </span>
+          {/*<span className="absolute top-0 left-0 ml-6 mt-6 px-2 py-1 text-xs font-bold font-heading bg-white border-2 border-red-500 rounded-full text-red-500">
+                  -15%
+                </span>*/}
+          
                 <Link
                   className="block"
                   to={{
@@ -34,9 +35,10 @@ const Products = ({ products }) => {
                     </h3>
                     <p className="text-lg font-bold font-heading text-blue-500">
                       <span>Rs {product?.price}</span>
-                      // <span className="text-xs text-gray-500 font-semibold font-heading line-through">
-                      //   Rs 40.99
-                      // </span>
+{/*<span className="text-xs text-gray-500 font-semibold font-heading line-through">
+                        Rs 40.99
+                      </span>*/}
+
                     </p>
                   </a>
                   
