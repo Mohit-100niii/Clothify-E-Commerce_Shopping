@@ -33,7 +33,7 @@ const Products = ({ products }) => {
                     <h3 className="mb-2 text-xl font-bold font-heading">
                       {product?.name}
                     </h3>
-                    <p className="text-lg font-bold font-heading text-blue-500">
+                    <p className="text-xl font-bold font-heading text-blue-500">
                       <span>Rs {product?.price}</span>
 {/*<span className="text-xs text-gray-500 font-semibold font-heading line-through">
                         Rs 40.99
